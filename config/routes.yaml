@@ -1,0 +1,15 @@
+controllers:
+  resource: ../src/Controller/
+  type: attribute
+
+homepage:
+  path: /
+  controller: App\Controller\ArticleController::home
+
+articles:
+  path: /articles
+  controller: App\Controller\ArticleController::index
+
+contact:
+  path: /contact
+  controller: App\Controller\ArticleController::index
