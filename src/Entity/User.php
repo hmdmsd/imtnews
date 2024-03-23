@@ -13,6 +13,7 @@ use Symfony\UX\Turbo\Attribute\Broadcast;
 #[ORM\InheritanceType('SINGLE_TABLE')]
 #[ORM\DiscriminatorColumn(name: 'discr', type: 'string')]
 #[ORM\DiscriminatorMap(['user' => User::class, 'admin' => Admin::class, 'reporter' => Reporter::class])]
+
 class User
 {
     #[ORM\Id]

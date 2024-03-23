@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "18c8da912c8ab83a65997ff395393a90",
-=======
-    "content-hash": "eef08a386c662c87148c0bf8c4571137",
->>>>>>> db8b5e832c7a8d26eacbbe17fc874eb4ed1742d7
+    "content-hash": "ae88c522aaf10f42f9c5e425a59b613a",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -7515,7 +7511,6 @@
             "time": "2022-02-21T01:04:05+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "phpstan/phpstan",
             "version": "1.10.63",
             "source": {
@@ -7578,8 +7573,6 @@
             "time": "2024-03-18T16:53:53+00:00"
         },
         {
-=======
->>>>>>> df8a0768df9655f82f907c91b78d44f8658f1aa3
             "name": "phpunit/php-code-coverage",
             "version": "9.2.31",
             "source": {

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporter Profile</title>
+    <!-- Add any additional styles or meta tags here -->
+</head>
+<body>
+    <h1>Reporter Profile</h1>
+    
+    <h2>Articles by {{ reporter.name }}</h2>
+    <ul>
+        {% for article in articles %}
+            <li>
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.content }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Add any additional content here -->
+
+</body>
+</html>

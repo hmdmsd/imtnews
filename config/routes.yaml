@@ -6,10 +6,16 @@ homepage:
   path: /
   controller: App\Controller\ArticleController::home
 
+myaccount:
+  path: /myaccount
+  controller: App\Controller\ReporterController::index
+
 articles:
   path: /articles
   controller: App\Controller\ArticleController::index
 
-contact:
-  path: /contact
-  controller: App\Controller\ArticleController::index
+article_detail:
+  path: /articles/{articleId}
+  controller: App\Controller\ArticleController::show
+  requirements:
+    articleId: '\d+'   # Ensure articleId is a number

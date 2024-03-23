@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}My Website{% endblock %}</title>
-    <!-- Add any common CSS, meta tags, or scripts here -->
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Add your CSS styles here */
         .nav {
@@ -33,15 +34,49 @@
         .active {
             display: block; /* Show active content */
         }
+
+        .article-link {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+
+        .article-link:hover {
+            color: #23527c;
+        }
+
+        .profile-icon {
+            float: left; /* Ensure the icon appears before the navigation */
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px; /* Adjust padding as needed */
+        }
+
+        .profile-icon a {
+            color: white; /* Adjust color as needed */
+            text-decoration: none;
+        }
+        
     </style>
 </head>
 <body>
+    <!-- Profile Icon -->
+    <div class="profile-icon">
+        <a href="#" onclick="showContent('myaccount', '/myaccount')">
+            <!-- Use appropriate icon class from Font Awesome -->
+            <i class="fas fa-user"></i>
+        </a>
+    </div>
+
+    <!-- Navigation Bar -->
     <div class="nav">
         <a href="#" onclick="showContent('home', '/')">Home</a>
         <a href="#" onclick="showContent('articles', '/articles')">Articles</a>
         <a href="#" onclick="showContent('contact', '/contact')">Contact</a>
     </div>
 
+    <!-- Content Sections -->
     <div id="home" class="content active">
         <h1>Home</h1>
         <p>Welcome to the home page</p>
@@ -52,8 +87,7 @@
         <ul>
             {% for article in articles %}
                 <li>
-                    <h2>{{ article.title }}</h2>
-                    <p>{{ article.content }}</p>
+                    <h2><span class="article-link" onclick="showArticle('{{ article.id }}')">{{ article.title }}</span></h2>
                 </li>
             {% endfor %}
         </ul>
@@ -64,6 +98,7 @@
         <p>You can contact me at</p>
     </div>
 
+    <!-- JavaScript for toggling content and showing articles -->
     <script>
         function showContent(tabName, url) {
             var contents = document.getElementsByClassName('content');
@@ -72,6 +107,11 @@
             }
             document.getElementById(tabName).classList.add('active');
             history.pushState({}, '', url); // Change the URL
+        }
+
+        function showArticle(articleId) {
+            // Redirect to the page where you display the full content of the article
+            window.location.href = '/articles/' + articleId;
         }
     </script>
 </body>

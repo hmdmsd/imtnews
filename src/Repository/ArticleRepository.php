@@ -21,6 +21,16 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    public function findByReporter(Reporter $reporter): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.reporter = :reporter')
+            ->setParameter('reporter', $reporter)
+            ->orderBy('a.createdAt', 'DESC') // You can adjust the sorting as needed
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Article[] Returns an array of Article objects
 //     */

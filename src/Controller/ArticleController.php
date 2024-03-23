@@ -31,4 +31,17 @@ class ArticleController extends AbstractController
     {
         return $this->render('layout.html.twig');
     }
+
+    public function show(EntityManagerInterface $entityManager, $articleId): Response
+        {
+            $article = $entityManager->getRepository(Article::class)->find($articleId);
+            if (!$article) {
+                throw $this->createNotFoundException('Article not found');
+            }
+            return $this->render('article_detail.html.twig', [
+                'article' => $article,
+            ]);
+        }
+
+    
 }
