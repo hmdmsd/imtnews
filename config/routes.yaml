@@ -19,8 +19,23 @@ article_detail:
   controller: App\Controller\ArticleController::show
   requirements:
     articleId: '\d+'   # Ensure articleId is a number
+
+reporter_article_detail:
+  path: /reporter/articles/{articleId}
+  controller: App\Controller\ReporterArticleController::show
+  requirements:
+    articleId: '\d+'   # Ensure articleId is a number
     
 add_article:
-    path: /article/add
-    controller: App\Controller\ArticleController::add
+    path: /reporter/article/add
+    controller: App\Controller\ReporterArticleController::add
     methods: [GET, POST]
+
+article_edit:
+    path: /reporter/article/{articleId}/edit
+    controller: 'App\Controller\ReporterArticleController::edit'
+    methods: ['GET', 'POST']
+
+article_delete:
+    path: reporter/articles/{articleId}/delete
+    controller: 'App\Controller\ReporterArticleController::delete'

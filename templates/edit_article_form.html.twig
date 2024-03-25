@@ -1,0 +1,22 @@
+{# edit_article_form.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Article</title>
+    <!-- Add any additional styles or meta tags here -->
+</head>
+<body>
+    <h1>Edit Article</h1>
+    
+    {# Display the form for editing the article #}
+    <form method="post">
+        {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.content) }}
+        <button type="submit">Save Changes</button>
+        {{ form_end(form) }}
+    </form>
+</body>
+</html>

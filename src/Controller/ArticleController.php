@@ -49,44 +49,4 @@ class ArticleController extends AbstractController
                 'article' => $article,
             ]);
         }
-    
-    public function add(Request $request, EntityManagerInterface $em): Response
-        {
-            // Create a new Article entity
-            $article = new Article();
-            
-            // Create the form
-            $form = $this->createForm(ArticleType::class, $article);
-            
-            // Handle form submission
-            $form->handleRequest($request);
-            
-            // If form is submitted and valid, persist the article to the database
-            if ($form->isSubmitted() && $form->isValid()) {
-                // Set additional properties of the article
-                $article->setDate(new \DateTime());
-                $article->setVisitors(0);
-                
-                // Retrieve the reporter (adjust this logic based on your application)
-                $reporterId = 1;
-                $reporter = $em->getRepository(Reporter::class)->find($reporterId); 
-                if (!$reporter) {
-                    throw $this->createNotFoundException('Reporter not found');
-                }
-                $article->setReporter($reporter);
-            
-                // Persist the article
-                $em->persist($article);
-                $em->flush();
-            
-                
-            }
-            
-            // Render the form template
-            return $this->render('add_article_form.html.twig', [
-                'form' => $form->createView(),
-            ]);
-        }
-        
-    
 }

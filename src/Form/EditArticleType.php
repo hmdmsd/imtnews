@@ -9,22 +9,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class EditArticleType extends AbstractType
+class ArticleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('title', TextType::class, [
-                'label' => 'Title',
-                'required' => true,
-            ])
-            ->add('content', TextareaType::class, [
-                'label' => 'Content',
-                'required' => true,
-            ]);
-    }
-
-    public function buildEditForm(FormBuilderInterface $builder, array $options)
     {
         // Récupérer les données de l'article à modifier
         $article = $options['data'];

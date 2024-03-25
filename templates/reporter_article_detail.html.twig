@@ -1,4 +1,4 @@
-{# article_detail.html.twig #}
+{# reporte_article_detail.html.twig #}
 
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,16 @@
         <div class="content">
             {{ article.content | raw }} {# Assuming article content is HTML, use | raw to output it as HTML #}
         </div>
+
         <a href="{{ path('articles') }}">Back to Articles</a>
+        
+        <!-- Bouton de suppression -->
+        <a href="{{ path('article_delete', {'articleId': article.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')">Supprimer l'article</a>
+
+        <!-- Bouton d'édition -->
+        <a href="{{ path('article_edit', {'articleId': article.id}) }}" class="btn btn-primary">Modifier l'article</a>
+        
     </div>
 </body>
 </html>
+

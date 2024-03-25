@@ -8,7 +8,7 @@
 <body>
     <h1>Reporter Profile</h1>
     
-    <h2>Articles by {{ reporter.getFirstName() }} {{ reporter.getLastName() }}</h2>
+    <h2>Articles written by {{ reporter.getFirstName() }} {{ reporter.getLastName() }}</h2>
     <ul>
         {% for article in articles %}
             <li>
@@ -19,13 +19,11 @@
         {% endfor %}
     </ul>
 
-    <!-- Add any additional content here -->
     <!-- Add Article Button -->
     <div>
         <a href="{{ path('add_article') }}" class="btn btn-primary">Add Article</a>
     </div>
 
-    <!-- Add any additional content here -->
 </body>
 </html>
 
