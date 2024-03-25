@@ -19,3 +19,8 @@ article_detail:
   controller: App\Controller\ArticleController::show
   requirements:
     articleId: '\d+'   # Ensure articleId is a number
+    
+add_article:
+    path: /article/add
+    controller: App\Controller\ArticleController::add
+    methods: [GET, POST]

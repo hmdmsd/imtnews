@@ -1,0 +1,14 @@
+{# templates/add_article.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Add New Article{% endblock %}
+
+{% block body %}
+    <h1>Add New Article</h1>
+    {{ form_start(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.content) }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+    {{ form_end(form) }}
+{% endblock %}

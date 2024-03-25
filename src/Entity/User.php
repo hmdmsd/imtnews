@@ -11,8 +11,8 @@ use Symfony\UX\Turbo\Attribute\Broadcast;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[Broadcast]
 #[ORM\InheritanceType('SINGLE_TABLE')]
-#[ORM\DiscriminatorColumn(name: 'discr', type: 'string')]
-#[ORM\DiscriminatorMap(['user' => User::class, 'admin' => Admin::class, 'reporter' => Reporter::class])]
+#[ORM\DiscriminatorColumn(name: 'user_role', type: 'string')]
+#[ORM\DiscriminatorMap(['user' => User::class, 'admin' => Admin::class, 'Reporter' => Reporter::class])]
 
 class User
 {
@@ -34,6 +34,7 @@ class User
     private ?string $password = null;
 
     #[ORM\ManyToMany(targetEntity: Role::class, inversedBy: 'users')]
+    #[ORM\JoinTable(name:"user_role")]
     private Collection $roles;
 
     public function __construct()

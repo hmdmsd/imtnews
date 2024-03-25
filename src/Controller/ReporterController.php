@@ -11,7 +11,7 @@ use App\Entity\Reporter;
 
 class ReporterController extends AbstractController
 {
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(EntityManagerInterface $entityManager,ArticleRepository $articleRepository): Response
     {
         // Assuming you have a method in ArticleRepository to fetch articles by reporter
         $reporterId = 1;
@@ -19,7 +19,8 @@ class ReporterController extends AbstractController
         $articles = $articleRepository->findByReporter($reporter); // You need to implement this method in ArticleRepository
 
         // Render the view and pass articles data to it
-        return $this->render('reporter/reporter_profile.html.twig', [
+        return $this->render('reporter_profile.html.twig', [
+            'reporter' => $reporter,
             'articles' => $articles,
         ]);
     }

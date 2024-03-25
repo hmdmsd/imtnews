@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Article;
+use App\Entity\Reporter;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -26,7 +27,6 @@ class ArticleRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('a')
             ->andWhere('a.reporter = :reporter')
             ->setParameter('reporter', $reporter)
-            ->orderBy('a.createdAt', 'DESC') // You can adjust the sorting as needed
             ->getQuery()
             ->getResult();
     }

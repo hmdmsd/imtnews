@@ -1,0 +1,39 @@
+{# article_detail.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ article.title }}</title>
+    <style>
+        /* Add your CSS styles here */
+        /* This is just a simple example, adjust styles as needed */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        h1 {
+            margin-top: 0;
+        }
+        .content {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ article.title }}</h1>
+        <div class="content">
+            {{ article.content | raw }} {# Assuming article content is HTML, use | raw to output it as HTML #}
+        </div>
+        <a href="{{ path('articles') }}">Back to Articles</a>
+    </div>
+</body>
+</html>
