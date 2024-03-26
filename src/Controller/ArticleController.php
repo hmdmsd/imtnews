@@ -12,14 +12,11 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Form\ArticleType;
 use Symfony\Component\Routing\Annotation\Route;
 
-
-
 class ArticleController extends AbstractController
 {
     public function index(EntityManagerInterface $entityManager): Response
     {
         $articles = $entityManager->getRepository(Article::class)->findAll();
-
         $data = [];
         foreach ($articles as $article) {
             $data[] = [
@@ -28,7 +25,6 @@ class ArticleController extends AbstractController
                 'content' => $article->getContent(),
             ];
         }
-
         return $this->render('layout.html.twig', [
             'articles' => $data,
         ]);
@@ -45,11 +41,7 @@ class ArticleController extends AbstractController
             if (!$article) {
                 throw $this->createNotFoundException('Article not found');
             }
-            
-            // Incrémenter le nombre de visiteurs
-            $article->setVisitors(1);
-
-            // Enregistrer les changements dans la base de données
+            $article->setVisitors(1); // Incrémenter le nombre de visiteurs
             $entityManager->flush();
             return $this->render('article_detail.html.twig', ['article' => $article,
             ]); 

@@ -218,49 +218,57 @@ label {
 </head>
 <body>
 <div class="hello">
-        <h1 style ="color : #1BB9DE;">IMT NEWS</h1> <!-- Titre "IMT NEWS" en bleu ciel -->
-        <div class="profile-icon">
-            <!-- Icône de profil -->
-            <i class="fas fa-user"></i>
-        </div>
-        <div class="btn-logout">
-            <!-- Bouton "Logout" -->
-            <button>Logout</button>
-        </div>
-        <div class="right-div">
-            <form onsubmit="event.preventDefault();" role="search">
-                <label for="search">Search for stuff</label>
-                <input id="search" type="search" placeholder="Search..." autofocus required />
-                <button type="submit">Go</button>
-            </form>
-        </div>
+    <h1 style ="color : #1BB9DE;">IMT NEWS</h1> <!-- Titre "IMT NEWS" en bleu ciel -->
+    <div class="profile-icon">
+        <!-- Icône de profil -->
+        <i class="fas fa-user"></i>
     </div>
-
-    <!-- Navbar -->
-    <div class="navbar">
-        <a href="#" class="nav-item">Home</a>
-        <span class="nav-item"></span> <!-- Ajoute un séparateur -->
-        <a href="#" class="nav-item">Mes Articles</a>
-        <span class="nav-item"></span> <!-- Ajoute un séparateur -->
-        <a href="#" class="nav-item">Contact</a>
+    <div class="btn-logout">
+        <!-- Bouton "Logout" -->
+        <button>Logout</button>
     </div>
-    <div class="body-r">
-        <h1>{{ article.title }}</h1>
-        <div class="detail">
-            {{ article.content | raw }} {# Assuming article content is HTML, use | raw to output it as HTML #}
-        </div>
-
-        <a href="{{ path('articles') }}">Back to Articles</a>
-<div class="button-wrapper">
-        <!-- Bouton de suppression -->
-        <div class="delete-all-button"
-        <a href="{{ path('article_delete', {'articleId': article.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')">delete</a>
-        </div>
-        <!-- Bouton d'édition -->
-        <div class="edit-all-button">
-        <a href="{{ path('article_edit', {'articleId': article.id}) }}" class="btn btn-primary">edit</a>
-        </div>
+    <div class="right-div">
+        <form onsubmit="event.preventDefault();" role="search">
+            <label for="search">Search for stuff</label>
+            <input id="search" type="search" placeholder="Search..." autofocus required />
+            <button type="submit">Go</button>
+        </form>
+    </div>
 </div>
+
+<!-- Navbar -->
+<div class="navbar">
+    <a href="#" class="nav-item">Home</a>
+    <span class="nav-item"></span> <!-- Ajoute un séparateur -->
+    <a href="#" class="nav-item">Mes Articles</a>
+    <span class="nav-item"></span> <!-- Ajoute un séparateur -->
+    <a href="#" class="nav-item">Contact</a>
+</div>
+<div class="body-r">
+    <h1>{{ article.title }}</h1>
+    <div class="detail">
+        {{ article.content | raw }} {# Assuming article content is HTML, use | raw to output it as HTML #}
+    </div>
+
+    <a href="{{ path('articles') }}">Back to Articles</a>
+<div class="button-wrapper">
+    <!-- Bouton de suppression -->
+    <div class="delete-all-button">
+        <a href="{{ path('article_delete', {'articleId': article.id}) }}" onclick="return confirmDelete()">delete</a>
+    </div>
+
+    <!-- Bouton d'édition -->
+    <div class="edit-all-button">
+        <a href="{{ path('article_edit', {'articleId': article.id}) }}" class="btn btn-primary">edit</a>
+    </div>
+</div>
+
+<script>
+    function confirmDelete() {
+        return confirm("Êtes-vous sûr de vouloir supprimer cet article ?");
+    }
+</script>
+
     </div>
 </body>
 </html>

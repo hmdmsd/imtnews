@@ -13,8 +13,6 @@ use App\Form\ArticleType;
 use App\Form\EditArticleType;
 use Symfony\Component\Routing\Annotation\Route;
 
-
-
 class ReporterArticleController extends AbstractController
 {
     public function index(EntityManagerInterface $entityManager): Response
@@ -29,7 +27,6 @@ class ReporterArticleController extends AbstractController
                 'content' => $article->getContent(),
             ];
         }
-
         return $this->render('layout.html.twig', [
             'articles' => $data,
         ]);
@@ -75,16 +72,19 @@ class ReporterArticleController extends AbstractController
                 // Persist the article
                 $em->persist($article);
                 $em->flush();
-            
             }
             return $this->render('add_article_form.html.twig', [
                 'form' => $form->createView(),
             ]);
         }
-    
     public function edit(Request $request, EntityManagerInterface $em, $articleId): Response
     {
         $article = $em->getRepository(Article::class)->find($articleId);
+
+        // Si l'article n'existe pas, retourner une erreur 404
+        if (!$article) {
+            throw $this->createNotFoundException('Article not found');
+        }
 
         // Créer le formulaire pour éditer l'article
         $form = $this->createForm(EditArticleType::class, $article);
@@ -96,6 +96,9 @@ class ReporterArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // Persister les changements dans la base de données
             $em->flush();
+
+            // Rediriger vers la page de détail de l'article
+            return $this->redirectToRoute('reporter_article_detail', ['articleId' => $article->getId()]);
         }
         
         // Rendre le template du formulaire d'édition
@@ -105,15 +108,17 @@ class ReporterArticleController extends AbstractController
     }
    
     public function delete(EntityManagerInterface $em, $articleId): Response
-        {
-            $article = $em->getRepository(Article::class)->find($articleId);
-            if (!$article) {
-                throw $this->createNotFoundException('Article not found');
-            }
-            $em->remove($article);
-            $em->flush();
-            // Redirect to articles list or any other page after deletion
-            return $this->redirectToRoute('myaccount');
+    {
+        $article = $em->getRepository(Article::class)->find($articleId);
+        if (!$article) {
+            throw $this->createNotFoundException('Article not found');
         }
+        
+        $em->remove($article);
+        $em->flush();
+        
+        // Redirect to articles list or any other page after deletion
+        return $this->redirectToRoute('articles'); // assuming the route name for the articles list is "articles"
+    }
     
 }
