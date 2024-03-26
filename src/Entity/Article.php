@@ -89,7 +89,7 @@ class Article
 
     public function setVisitors(int $visitors): static
     {
-        $this->visitors = $visitors;
+        $this->visitors = $this->visitors + $visitors;
 
         return $this;
     }

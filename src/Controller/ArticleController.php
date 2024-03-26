@@ -45,8 +45,13 @@ class ArticleController extends AbstractController
             if (!$article) {
                 throw $this->createNotFoundException('Article not found');
             }
-            return $this->render('article_detail.html.twig', [
-                'article' => $article,
-            ]);
+            
+            // Incrémenter le nombre de visiteurs
+            $article->setVisitors(1);
+
+            // Enregistrer les changements dans la base de données
+            $entityManager->flush();
+            return $this->render('article_detail.html.twig', ['article' => $article,
+            ]); 
         }
 }

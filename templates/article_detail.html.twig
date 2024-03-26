@@ -1,5 +1,3 @@
-{# article_detail.html.twig #}
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,15 +23,51 @@
         .content {
             margin-top: 20px;
         }
+        .categories {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .author {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .date {
+            float: right;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .visitors {
+            float: right;
+            font-style: italic;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>{{ article.title }}</h1>
+        {% if article.reporter %}
+            <div class="author">Auteur: {{ article.reporter.firstName }} {{ article.reporter.lastName }}</div>
+        {% endif %}
+        {% if article.date %}
+            <div class="date">Date de publication: {{ article.date|date('d/m/Y') }}</div>
+        {% endif %}
+        {% if article.tags is not empty %}
+            {# Afficher les catégories/tags de l'article #}
+            <div class="categories">Catégories: 
+                {% for tag in article.tags %}
+                    {{ tag.name }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
         <div class="content">
             {{ article.content | raw }} {# Assuming article content is HTML, use | raw to output it as HTML #}
         </div>
-        <a href="{{ path('articles') }}">Back to Articles</a>
+        <a href="{{ path('articles') }}">Retour aux Articles</a>
+        {% if article.visitors is not null %}
+            <div class="visitors">Nombre de visiteurs: {{ article.visitors }}</div>
+        {% endif %}
     </div>
 </body>
 </html>
+

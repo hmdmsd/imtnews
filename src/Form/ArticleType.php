@@ -8,23 +8,12 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Tag;
 
-class EditArticleType extends AbstractType
+class ArticleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('title', TextType::class, [
-                'label' => 'Title',
-                'required' => true,
-            ])
-            ->add('content', TextareaType::class, [
-                'label' => 'Content',
-                'required' => true,
-            ]);
-    }
-
-    public function buildEditForm(FormBuilderInterface $builder, array $options)
     {
         // Récupérer les données de l'article à modifier
         $article = $options['data'];
@@ -33,14 +22,17 @@ class EditArticleType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Title',
                 'required' => true,
-                // Pré-remplir le champ avec le titre actuel de l'article
-                'data' => $article->getTitle(),
             ])
             ->add('content', TextareaType::class, [
                 'label' => 'Content',
                 'required' => true,
-                // Pré-remplir le champ avec le contenu actuel de l'article
-                'data' => $article->getContent(),
+            ])
+            ->add('tags', EntityType::class, [
+                'class' => Tag::class,
+                'choice_label' => 'name',
+                'multiple' => true, // Pour permettre la sélection de plusieurs tags
+                'expanded' => true, // Pour afficher les tags sous forme de liste déroulante
+                'label' => 'Tags', // Label du champ
             ]);
     }
 
