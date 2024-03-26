@@ -3,27 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <title>Reporter Profile</title>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('style.css')) }}">
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <!-- Add any additional styles or meta tags here -->
+    <style> /* style.css */
+
+/* Style pour le titre "IMT NEWS" */
+h1 {
+    color: #1BB9DE; /* Couleur bleu ciel */
+}
+
+/* Style pour l'icône de profil */
+.profile-icon {
+    float: right; /* Alignement à droite */
+    margin-left: 20px; /* Marge à gauche pour l'espacement */
+}
+
+/* Style pour le bouton "Logout" */
+.btn-logout {
+    float: right; /* Alignement à droite */
+    margin-left: 20px; /* Marge à gauche pour l'espacement */
+}
+
+/* Style pour la barre de recherche */
+
+
+/* style.css */
+
+/* Style pour la navbar */
+/* Style pour la navbar */
+/* Style pour la navbar */
+.navbar {
+    display: flex; /* Utilise flexbox */
+    justify-content: space-between; /* Aligne les éléments de manière égale avec un espace entre eux */
+    background-color: #1BB9DE; /* Couleur de fond bleue */
+    padding: 10px 20px; /* Ajoute un espace intérieur à la navbar */
+    width: 100%; /* La navbar occupe toute la largeur de la page */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
+    margin-bottom: 10px;
+}
+
+
+/* Style pour les éléments de la navbar */
+.nav-item {
+    color: white; /* Couleur du texte blanc */
+    text-decoration: none; /* Supprime les soulignements des liens */
+}
+
+:root {
+  --rad: .7rem;
+  --dur: .3s;
+  --color-dark: #9ACC36;
+  --color-light: #fff;
+  --color-brand: #9ACC36;
+  --font-fam: 'Lato', sans-serif;
+  --height: 3rem;
+  --btn-width: 3rem;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+}
+
+
+
+form {
+position: relative;
+width: 30rem;
+background: var(--color-brand);
+border-radius: var(--rad);
+}
+input, button {
+height: var(--height);
+font-family: var(--font-fam);
+border: 0;
+color: var(--color-dark);
+font-size: 1.8rem;
+}
+input[type="search"] {
+outline: 0; // <-- shold probably remove this for better accessibility, adding for demo aesthetics for now.
+width: 100%;
+background: var(--color-light);
+padding: 0 1.6rem;
+border-radius: var(--rad);
+appearance: none; //for iOS input[type="search"] roundedness issue. border-radius alone doesn't work
+transition: all var(--dur) var(--bez);
+transition-property: width, border-radius;
+z-index: 1;
+position: relative;
+}
+button {
+display: none;
+position: absolute;
+top: 0;
+right: 0;
+width: var(--btn-width);
+font-weight: bold;
+background: var(--color-brand);
+border-radius: 0 var(--rad) var(--rad) 0;
+}
+input:not(:placeholder-shown) {
+border-radius: var(--rad) 0 0 var(--rad);
+width: calc(100% - var(--btn-width));
++ button {
+    display: block;
+}
+}
+.hello {
+    display: flex; /* Utilise flexbox */
+    flex-direction: row; /* Définit la direction des éléments comme étant horizontale (de gauche à droite) */
+    justify-content: space-between; /* Aligne les éléments de manière égale sur l'axe principal avec un espace entre eux */
+    align-items: center; /* Centre les éléments verticalement sur l'axe transversal */
+}
+
+label {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+/* Style pour la div tout à droite */
+.right-div {
+    margin-left: auto; /* Place la div tout à droite */
+}
+/* Style pour le cadre vert */
+/* Style pour la div tout à droite */
+.right-div {
+    margin-left: auto; /* Place la div tout à droite */
+}
+
+/* Style pour le cadre vert */
+.body-r {
+    border: 2px solid green; /* Crée un cadre solide de 2px de largeur de couleur verte */
+    padding: 10px; /* Ajoute un espace intérieur au cadre */
+    border-radius: 18px;
+    display: flex; /* Utilise flexbox */
+    margin-top: 20px; 
+}
+
+/* Style pour chaque colonne */
+.column {
+    flex: 1; /* Chaque colonne prend une part égale de l'espace disponible */
+    margin: 0 10px; /* Marge entre les colonnes */
+}
+.add{
+    margin-top: auto; /* Place la div en bas */
+    margin-left: 0;
+}
+.article-item {
+    border: 1px solid green; /* Bordure verte */
+    border-radius: 10px; /* Border-radius pour arrondir les coins */
+    padding: 3px; /* Espace intérieur pour séparer le contenu du bord */
+    margin-bottom: 10px; /* Marge en bas pour séparer les éléments */
+    text-decoration: none; /* Supprime le soulignement du lien */
+    color: #9ACC36;
+    border-color: #9ACC36;
+    list-style-type: none; /* Supprime les puces des éléments de liste */
+}
+
+.article-content {
+    overflow: hidden; /* Masque tout le contenu dépassant de la boîte */
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    text-overflow: ellipsis; /* Affiche les points de suspension (...) lorsque le texte dépasse */
+}
+.article-item-v{
+    background-color: #9ACC36; /* Couleur de fond verte */
+    color: white; /* Couleur du texte blanc */
+    padding: 10px; /* Ajoute un espace intérieur */
+    border-radius: 5px; 
+    text-align: center;
+    margin-top: 10px;
+}
+
+</style>
 </head>
 <body>
-    <h1>Reporter Profile</h1>
-    
-    <h2>Articles written by {{ reporter.getFirstName() }} {{ reporter.getLastName() }}</h2>
-    <ul>
-        {% for article in articles %}
-            <li>
-                <a href="{{ path('reporter_article_detail', {'articleId': article.getId()}) }}">
-                    <h3>{{ article.getTitle() }}</h3>
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <!-- Add Article Button -->
-    <div>
-        <a href="{{ path('add_article') }}" class="btn btn-primary">Add Article</a>
+    <div class="hello">
+        <h1>IMT NEWS</h1> <!-- Titre "IMT NEWS" en bleu ciel -->
+        <div class="profile-icon">
+            <!-- Icône de profil -->
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="btn-logout">
+            <!-- Bouton "Logout" -->
+            <button>Logout</button>
+        </div>
+        <div class="right-div">
+            <form onsubmit="event.preventDefault();" role="search">
+                <label for="search">Search for stuff</label>
+                <input id="search" type="search" placeholder="Search..." autofocus required />
+                <button type="submit">Go</button>
+            </form>
+        </div>
     </div>
 
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="#" class="nav-item">Home</a>
+        <span class="nav-item"></span> <!-- Ajoute un séparateur -->
+        <a href="#" class="nav-item">Mes Articles</a>
+        <span class="nav-item"></span> <!-- Ajoute un séparateur -->
+        <a href="#" class="nav-item">Contact</a>
+    </div>
+
+    <div class="body-r">
+        <div class="column">
+            <div class="taswira">
+                <h2>Articles written by {{ reporter.getFirstName() }} {{ reporter.getLastName() }}</h2>
+                <i class="fas fa-user fa-10x"></i>
+            </div>
+        </div>
+        <div class="column">
+            <div class="les-articles">
+                <ul>
+                <li class="article-item-v"> My articles
+                        </li>
+                    {% for article in articles %}
+                        <li class="article-item">
+                            <a href="{{ path('reporter_article_detail', {'articleId': article.getId()}) }}">
+                                <h3>{{ article.getTitle() }}</h3>
+                                <h4 class="article-content">{{ article.getContent() }} ....read more</h4>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="column">
+            <div class="add">
+                <i class="fa fa-plus-square"></i>
+                <a href="{{ path('add_article') }}" class="btn btn-primary">Add Article</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-

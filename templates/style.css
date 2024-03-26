@@ -1,0 +1,47 @@
+/* style.css */
+
+/* Style pour le titre "IMT NEWS" */
+h1 {
+    color: cornflowerblue; /* Couleur bleu ciel */
+}
+
+/* Style pour l'icône de profil */
+.profile-icon {
+    float: right; /* Alignement à droite */
+    margin-left: 20px; /* Marge à gauche pour l'espacement */
+}
+
+/* Style pour le bouton "Logout" */
+.btn-logout {
+    float: right; /* Alignement à droite */
+    margin-left: 20px; /* Marge à gauche pour l'espacement */
+}
+
+/* Style pour la barre de recherche */
+.search-bar {
+    float: right; /* Alignement à droite */
+    margin-left: 20px; /* Marge à gauche pour l'espacement */
+}
+
+/* style.css */
+
+/* Style pour la navbar */
+.navbar {
+    background-color: cornflowerblue; /* Couleur de fond bleue */
+    clear: both; /* Efface les éléments flottants */
+    margin-top: 20px; /* Marge en haut pour l'espacement */
+    padding: 10px 0; /* Ajoute un espace intérieur à la navbar */
+}
+
+/* Style pour les éléments de la navbar */
+.nav-item {
+    margin-right: 20px; /* Marge à droite pour l'espacement entre les éléments */
+    color: white; /* Couleur du texte blanc */
+    text-decoration: none; /* Supprime les soulignements des liens */
+}
+
+/* Style pour le contenu de la page */
+.content {
+    margin-top: 20px; /* Marge en haut pour l'espacement par rapport à la navbar */
+}
+
